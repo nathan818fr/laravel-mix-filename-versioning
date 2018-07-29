@@ -7,8 +7,8 @@ class LaravelMixFilenameVersioning {
       const newAssets = {};
 
       Object.keys(stats.compilation.assets).forEach(assetName => {
-        for (let path of Config.fileLoaderDirs) {
-          if (assetName.indexOf(path + '/') !== -1) {
+        for (let key in Config.fileLoaderDirs) {
+          if (Config.fileLoaderDirs.hasOwnProperty(key) && assetName.indexOf(Config.fileLoaderDirs[key] + '/') !== -1) {
             return;
           }
         }
